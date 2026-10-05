@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Todo App is running');
+app.get("/", (req, res) => {
+  res.send(`<h1>Welcome to the Kubernetes Project!</h1>`);
 });
 
 app.listen(port, () => {
