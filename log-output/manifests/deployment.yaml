@@ -12,9 +12,22 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes:
+        - name: log-volume
+          emptyDir: {}
       containers:
-        - name: log-output
-          image: ahmedelsherbiny0/log-output:v1.1
+        - name: string-generator
+          image: ahmedelsherbiny0/string-generator:v1.0
+          volumeMounts:
+            - name: log-volume
+              mountPath: /usr/src/app/files
+        - name: string-response
+          image: ahmedelsherbiny0/string-response:v1.0
+          ports:
+            - containerPort: 3000
           env:
             - name: PORT
               value: "3000"
+          volumeMounts:
+            - name: log-volume
+              mountPath: /usr/src/app/files
