@@ -12,9 +12,16 @@ spec:
       labels:
         app: ping-pong
     spec:
+      volumes:
+        - name: ping-pong-volume
+          persistentVolumeClaim:
+            claimName: image-claim
       containers:
         - name: ping-pong
-          image: ahmedelsherbiny0/ping-pong:v1.1
+          image: ahmedelsherbiny0/ping-pong:v1.2
           env:
             - name: PORT
               value: "3000"
+          volumeMounts:
+            - name: ping-pong-volume
+              mountPath: /usr/src/app/files
