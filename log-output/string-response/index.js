@@ -6,15 +6,22 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const directory = path.join("/", "usr", "src", "app", "files");
-const filePath = path.join(directory, "log.txt");
+const stringPath = path.join(directory, "log.txt");
+const pingpongPath = path.join(directory, "pingpong.txt");
 
 app.get("/", (req, res) => {
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      return res.status(500).send("Log file not found yet");
-    }
-    res.send(data);
-  });
+  try {
+    const logData = fs.existsSync(stringPath)
+      ? fs.readFileSync(stringPath, "utf8")
+      : "";
+    const pingData = fs.existsSync(pingpongPath)
+      ? fs.readFileSync(pingpongPath, "utf8")
+      : "Ping / Pongs: 0\n";
+
+    res.send(`${logData}<br/>${pingData}`);
+  } catch (err) {
+    res.status(500).send("Error reading files");
+  }
 });
-    
+
 app.listen(port);
