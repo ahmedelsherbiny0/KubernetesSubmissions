@@ -51,10 +51,27 @@ setInterval(async () => {
 app.get("/", (req, res) => {
   res.send(
     `
-      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;"> 
-        <h1>ToDo App</h1>
-        <img src="/image.jpg">
-        <p>DevOps with Kubernetes 2026</p>
+      <div style="font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; width: 100vw; background-color: #f9f9f9;"> 
+        <h1>Todo App</h1>
+        <img src="/image.jpg" style="width: 300px; height: 300px; border-radius: 10px;">
+        <div style="display: flex; gap: 10px; margin-top: 80px;"> 
+          <input type="text" maxlength="140" placeholder="Enter a new todo (max 140 characters)" style="font-weight: bold; padding: 10px; width: 500px; border: 2px solid rgb(78, 173, 82); border-radius: 5px;">
+          <button style="font-weight: bold; padding: 10px 20px; background-color: rgb(78, 173, 82); color: white; border: none; border-radius: 5px; font-size: 16px;">
+            Send
+          </button>
+        </div>
+        <h2>Todos</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 800px;"> 
+          <div style="width: full; background-color: #f0f0f0; font-weight: bold; padding: 10px 15px; border-left: 4px solid rgb(78, 173, 82); border-radius: 5px;">
+            Learn Kubernetes basics
+          </div>
+          <div style="width: full; background-color: #f0f0f0; font-weight: bold; padding: 10px 15px; border-left: 4px solid rgb(78, 173, 82); border-radius: 5px;">
+            Deploy application to cluster
+          </div>
+          <div style="width: full; background-color: #f0f0f0; font-weight: bold; padding: 10px 15px; border-left: 4px solid rgb(78, 173, 82); border-radius: 5px;">
+            Configure persistent volumes
+          </div>
+        </div>
       </div>
     `,
   );
