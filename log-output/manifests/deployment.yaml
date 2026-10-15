@@ -14,16 +14,15 @@ spec:
     spec:
       volumes:
         - name: log-volume
-          persistentVolumeClaim:
-            claimName: image-claim
+          emptyDir: {}
       containers:
         - name: string-generator
-          image: ahmedelsherbiny0/string-generator:v1.0
+          image: ahmedelsherbiny0/string-generator:v1.1
           volumeMounts:
             - name: log-volume
               mountPath: /usr/src/app/files
         - name: string-response
-          image: ahmedelsherbiny0/string-response:v1.4
+          image: ahmedelsherbiny0/string-response:v1.5
           ports:
             - containerPort: 3000
           env:

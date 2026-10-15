@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 
-const directory = path.join("/", "usr", "src", "app", "files");
+const directory = path.join(__dirname, "files");
 const filePath = path.join(directory, "log.txt");
 
 if (!fs.existsSync(directory)) {
