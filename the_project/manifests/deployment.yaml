@@ -19,10 +19,23 @@ spec:
             claimName: todo-image-claim
       containers:
         - name: todo-app
-          image: ahmedelsherbiny0/todo-app:v1.6
+          image: ahmedelsherbiny0/todo-app:v1.7
           env:
             - name: PORT
-              value: "3000"
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-app-configmap
+                  key: APP_PORT
+            - name: IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-app-configmap
+                  key: IMAGE_URL
+            - name: TIME
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-app-configmap
+                  key: TIME
           volumeMounts:
             - name: todo-image-volume
               mountPath: /usr/src/app/files
@@ -44,7 +57,10 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: ahmedelsherbiny0/todo-backend:v1.0
+          image: ahmedelsherbiny0/todo-backend:v1.1
           env:
             - name: PORT
-              value: "3001"
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-app-configmap
+                  key: APP_BACKEND_PORT

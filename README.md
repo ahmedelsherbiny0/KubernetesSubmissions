@@ -25,3 +25,4 @@
 - [2.3.](https://github.com/ahmedelsherbiny0/KubernetesSubmissions/tree/2.3)
 - [2.4.](https://github.com/ahmedelsherbiny0/KubernetesSubmissions/tree/2.4/the_project)
 - [2.5.](https://github.com/ahmedelsherbiny0/KubernetesSubmissions/tree/2.5/log-output)
+- [2.6.](https://github.com/ahmedelsherbiny0/KubernetesSubmissions/tree/2.6/the_project)
