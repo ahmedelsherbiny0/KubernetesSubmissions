@@ -16,6 +16,9 @@ spec:
       volumes:
         - name: log-volume
           emptyDir: {}
+        - name: config-volume
+          configMap:
+            name: log-output-configmap
       containers:
         - name: string-generator
           image: ahmedelsherbiny0/string-generator:v1.1
@@ -23,12 +26,20 @@ spec:
             - name: log-volume
               mountPath: /usr/src/app/files
         - name: string-response
-          image: ahmedelsherbiny0/string-response:v1.5
+          image: ahmedelsherbiny0/string-response:v1.6
           ports:
             - containerPort: 3000
           env:
             - name: PORT
               value: "3000"
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: log-output-configmap
+                  key: MESSAGE
           volumeMounts:
             - name: log-volume
               mountPath: /usr/src/app/files
+            - name: config-volume
+              mountPath: /usr/src/app/config
+              readOnly: true

@@ -9,4 +9,8 @@ kubectl apply -f manifests/
 
 ## Endpoints
 
-- `GET /` - Displays the current timestamp hash and ping/pong count from `ping-pong-svc`.
+- `GET /` 
+  - Displays the ConfigMap file content (`information.txt`)
+  - Environment variable `MESSAGE`
+  - The current timestamp hash
+  - The ping/pong count from `ping-pong-svc`.
