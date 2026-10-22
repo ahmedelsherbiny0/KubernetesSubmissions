@@ -4,7 +4,7 @@
 
 Deploy to Kubernetes with:
 ```bash
-kubectl apply -f manifests/
+kubectl apply -R -f manifests/
 ```
 
 ## Endpoints
