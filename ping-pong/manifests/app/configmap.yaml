@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ping-pong-configmap
+  namespace: exercises
+data:
+  APP_PORT: "3000"
