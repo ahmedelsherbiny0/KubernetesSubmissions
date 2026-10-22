@@ -15,7 +15,13 @@ spec:
     spec:
       containers:
         - name: ping-pong
-          image: ahmedelsherbiny0/ping-pong:v1.3
+          image: ahmedelsherbiny0/ping-pong:v1.4
           env:
             - name: PORT
-              value: "3000"
+              valueFrom:
+                configMapKeyRef:
+                  name: ping-pong-configmap
+                  key: APP_PORT
+          envFrom:
+            - secretRef:
+                name: postgres-secret
