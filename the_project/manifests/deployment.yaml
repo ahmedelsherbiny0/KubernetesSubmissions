@@ -57,13 +57,10 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: ahmedelsherbiny0/todo-backend:v1.2
+          image: ahmedelsherbiny0/todo-backend:v1.1
           env:
             - name: PORT
               valueFrom:
                 configMapKeyRef:
                   name: todo-app-configmap
                   key: APP_BACKEND_PORT
-          envFrom:
-            - secretRef:
-                name: postgres-secret
