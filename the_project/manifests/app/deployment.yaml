@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: ahmedelsherbiny0/todo-backend:v1.2
+          image: ahmedelsherbiny0/todo-backend:v1.3
           env:
             - name: PORT
               valueFrom:
