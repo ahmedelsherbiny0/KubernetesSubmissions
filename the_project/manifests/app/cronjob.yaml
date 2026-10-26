@@ -13,6 +13,7 @@ spec:
           containers:
             - name: todo-cronjob
               image: curlimages/curl:latest
+              imagePullPolicy: IfNotPresent
               command: ["/bin/sh", "-c"]
               args:
                 - |

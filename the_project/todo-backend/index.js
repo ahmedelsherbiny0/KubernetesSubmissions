@@ -38,10 +38,20 @@ app.post("/todos", async (req, res) => {
     return res.status(400).json({ error: "Task cannot be empty" });
   }
   if (task.length > 140) {
+    console.log(
+      "Error! Task length cannot exceed 140 characters:",
+      task.length,
+      ", for task: ",
+      task,
+    );
     return res.status(400).json({ error: "Task cannot exceed 140 characters" });
   }
 
-  const newTodo = await pool.query("INSERT INTO todos (task) VALUES ($1) RETURNING *", [task]);
+  const newTodo = await pool.query(
+    "INSERT INTO todos (task) VALUES ($1) RETURNING *",
+    [task],
+  );
+  console.log("Success! New todo added:", task);
   res.status(201).json(newTodo.rows[0]);
 });
 
